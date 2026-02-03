@@ -49,7 +49,9 @@ PostgreSQL
 pgAdmin 4
 
 🚀 Como Rodar o Projeto Localmente
+
 1️⃣ Clonar o repositório
+
 git clone https://github.com/seu-usuario/MiniERP.Api.git
 cd MiniERP.Api
 
@@ -70,6 +72,7 @@ No pgAdmin, crie um banco chamado:
 minierp_db
 
 4️⃣ Criar as migrations e tabelas
+
 dotnet ef migrations add InitialCreate
 dotnet ef database update
 
@@ -122,5 +125,5 @@ Atualmente contém apenas a estrutura base do projeto e configuração do ambien
 
 👨‍💻 Autor
 
-Projeto desenvolvido por [Seu Nome]
+Projeto desenvolvido por Leonardo Augusto
 Estudo e prática de ASP.NET Core + PostgreSQL. MiniERP.Api
