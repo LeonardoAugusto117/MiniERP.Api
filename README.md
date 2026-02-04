@@ -1,16 +1,78 @@
-📦 MiniERP.Api
+📦 BorealERP.Api
 
-Backend de um Mini ERP desenvolvido em ASP.NET Core Web API, com PostgreSQL, Entity Framework Core e Swagger.
+Backend de um Mini ERP desenvolvido em ASP.NET Core Web API, utilizando PostgreSQL, Entity Framework Core e Swagger.
 
-O objetivo do projeto é criar uma API simples para gestão básica de um ERP, permitindo:
+O objetivo do projeto é construir uma API RESTful para gestão básica de um ERP, cobrindo o fluxo completo de clientes, produtos, pedidos e controle de estoque.
 
-Cadastro de clientes
+🚧 Projeto em fase inicial — atualmente contém a estrutura base, configuração do ambiente e primeiras migrations.
 
-Cadastro de produtos
+🎯 Objetivo do Projeto
+
+O BorealERP foi pensado para simular um ERP real em pequena escala, com foco em boas práticas de backend, organização de código e regras de negócio.
+
+O sistema permitirá:
+
+Cadastro e gerenciamento de clientes
+
+Cadastro e gerenciamento de produtos
+
+Controle de estoque
 
 Criação de pedidos de venda
 
-🚧 Projeto em fase inicial — atualmente contém apenas a estrutura base e configuração do ambiente.
+Relacionamento entre cliente → pedido → produtos
+
+Baixa automática de estoque com base nos pedidos realizados
+
+🔄 Fluxo de Funcionamento do Sistema
+
+1️⃣ Clientes
+
+Cadastro completo de clientes
+
+Possibilidade de ativar/desativar clientes (soft delete)
+
+Clientes desativados não podem realizar pedidos
+
+2️⃣ Produtos
+
+Cadastro de produtos
+
+Produto possui:
+
+Preço
+
+Status (ativo/inativo)
+
+Quantidade em estoque
+
+Produtos inativos não podem ser utilizados em pedidos
+
+3️⃣ Pedidos
+
+Criação de pedidos vinculados a:
+
+Um cliente
+
+Um ou mais produtos
+
+O pedido:
+
+Calcula automaticamente o valor total
+
+Registra os itens e quantidades
+
+4️⃣ Estoque
+
+Tela/módulo próprio de estoque
+
+O estoque:
+
+Lê os pedidos existentes
+
+Realiza a baixa automática dos produtos vendidos
+
+Exibe o saldo atual de cada produto
 
 🛠️ Tecnologias Utilizadas
 
@@ -22,16 +84,15 @@ Entity Framework Core
 
 PostgreSQL
 
-Swagger (OpenAPI)
+Swagger / OpenAPI
 
-📁 Estrutura do Projeto
 MiniERP.Api
 │
-├── Controllers
-├── Models
-├── Data
-├── Services
-├── Repositories
+├── Controllers      # Endpoints da API
+├── Models           # Entidades do domínio
+├── Data             # DbContext e configurações do EF Core
+├── Services         # Regras de negócio
+├── Repositories     # Acesso a dados
 │
 ├── Program.cs
 ├── appsettings.json
@@ -61,7 +122,7 @@ Edite o arquivo appsettings.json:
 
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Host=localhost;Port=5432;Database=minierp_db;Username=postgres;Password=SUA_SENHA"
+    "DefaultConnection": "Host=localhost;Port=5432;Database=boreal_erp_db;Username=postgres;Password=SUA_SENHA"
   }
 }
 
@@ -69,7 +130,7 @@ Edite o arquivo appsettings.json:
 
 No pgAdmin, crie um banco chamado:
 
-minierp_db
+boreal_erp_db
 
 4️⃣ Criar as migrations e tabelas
 
@@ -78,7 +139,7 @@ dotnet ef database update
 
 5️⃣ Executar o projeto
 
-No Visual Studio:
+Via Visual Studio:
 
 Clique em Run
 
@@ -86,11 +147,9 @@ Ou via terminal:
 
 dotnet run
 
-
 Acesse o Swagger:
 
 https://localhost:PORTA/swagger
-
 
 Exemplo:
 
@@ -98,32 +157,38 @@ https://localhost:7070/swagger
 
 📄 Documentação da API
 
-A documentação dos endpoints é gerada automaticamente via Swagger:
+Toda a documentação dos endpoints é gerada automaticamente via Swagger:
 
 /swagger
 
 🧩 Funcionalidades Planejadas
 
- Cadastro de clientes
+Cadastro de clientes
 
- Cadastro de produtos
+Ativação/desativação de clientes
 
- Criação de pedidos
+Cadastro de produtos
 
- Relacionamento cliente → pedido
+Controle de estoque
 
- Cálculo de total do pedido
+Criação de pedidos
 
- Autenticação (futuro)
+Relacionamento cliente → pedido → produtos
 
- Versionamento de API
+Cálculo automático do total do pedido
+
+Baixa automática de estoque
+
+Autenticação e autorização (JWT)
+
+Versionamento de API
 
 📌 Status do Projeto
 
 🟡 Em desenvolvimento (fase inicial)
-Atualmente contém apenas a estrutura base do projeto e configuração do ambiente.
+Atualmente contém a estrutura base do projeto, configuração do ambiente e primeiras migrations.
 
 👨‍💻 Autor
 
-Projeto desenvolvido por Leonardo Augusto
-Estudo e prática de ASP.NET Core + PostgreSQL. MiniERP.Api
+Leonardo Augusto
+Projeto para estudo e prática de ASP.NET Core Web API, Entity Framework Core e PostgreSQL.
