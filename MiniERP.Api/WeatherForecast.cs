@@ -1,4 +1,4 @@
-namespace MiniERP.Api
+namespace BorealERP.Api
 {
     public class WeatherForecast
     {

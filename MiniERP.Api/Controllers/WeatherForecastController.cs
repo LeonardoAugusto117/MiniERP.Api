@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace MiniERP.Api.Controllers
+namespace BorealERP.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
